@@ -5,40 +5,30 @@ class ContatoService {
 
 
     constructor() {
-        this.db = firebase.firestore().doc('assingment1/lista');
-        this._listarTodosOsContatos();
+        this.db = firebase.database();
+        this.obterContatos();
     }
 
-    _listarTodosOsContatos() {
-        const db = this.db;
-        return new Promise(function (resolve, reject) {
-            db.onSnapshot((querySnapshot) => {
-                resolve(querySnapshot.data());
-            }, err => reject(err));
-        })
-    }
 
+// adicionar dados no firebase via firebase.database
     async addContato(contato) {
         let contatos = [];
 
         let novoContato = Object.assign({}, contato);
-        contatos = await this.obterContatos();
-        if (contatos.contato) {
-            contatos.contato.push(novoContato);
-            this.db.set(contatos, { merge: true });
-        } else {
-            console.log(novoContato);
-            novoContato ? console.log('não há dados') :
-            this.db.set({ contato: [novoContato] }, { merge: true });
-        }
-
+        this.db.ref().child("/lista/contatos").push(novoContato);
     }
 
+    // obter dados do firebase via request
     async obterContatos() {
-        let lista = await this._listarTodosOsContatos()
-        return lista;
-    }
 
+        const http = new XMLHttpRequest();
+        const url = 'https://gama-assignment-1-d87a1.firebaseio.com/lista/contatos.json?print=pretty;'
+
+        http.open('GET', url, false);
+        http.send();
+
+        return http.responseText;;
+    }
 
 
 

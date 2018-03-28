@@ -13,4 +13,5 @@
 .input-group > input[type="text"]:valid,
 .input-group > input[type="email"]:valid {
     border-bottom-color: rgb(12, 199, 28);
+    
 }

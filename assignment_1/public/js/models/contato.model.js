@@ -6,12 +6,4 @@ class ContatoModel {
         this.nome = nome;
         this.email = email;
     }
-
-    adicionarContato(contato) {
-        this.contato
-    }
-
-    get obterContato() {
-        return this
-    }
 }
