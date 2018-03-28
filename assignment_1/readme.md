@@ -28,8 +28,12 @@ instalar o Firebase tools
 Efetuar o login no Firebase no terminal
 >> firebase login
 
-No diretório do projeto. Iniciar as configurações do Firebase, para **hosting** e **firestore**
+No diretório do projeto. Iniciar as configurações do Firebase, para **hosting** e **firedatabase**
 >>  firebase init
 
 Por fim, realizar o deploy
 >> firebase deploy
+
+
+**Obs.:** Dados estão sendo salvos no firebase e pode ser verificado atraves da url
+https://gama-assignment-1-d87a1.firebaseio.com/lista/contatos.json?print=pretty
